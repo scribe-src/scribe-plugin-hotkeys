@@ -17,6 +17,12 @@ Implements a HotKey handler plugin for the [Scribe.io](https://scribe.io) framew
 
 Documentation is generated with `codo` and is available [here](http://blah.com).
 
+#### Development Environment Setup
+
+You will need to initialize the git submodules to install dependencies:
+
+    $ git submodule update --init --recursive
+
 #### Build
 
 To build for a specific `$PLATFORM`:
@@ -26,12 +32,6 @@ To build for a specific `$PLATFORM`:
 The following values are supported for `$PLATFORM`:
 
  - osx
-
-#### Tests
-
-Tests are written with [objc-unit](https://github.com/scribe-src/objc-unit). To run tests:
-
-    $ make test
 
 #### License
 
