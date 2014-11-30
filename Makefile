@@ -1,0 +1,3 @@
+#
+# scribe-plugin-hotkeys
+#
