@@ -1,3 +1,0 @@
-[submodule "deps/scribe-platform-osx"]
-	path = deps/scribe-platform-osx
-	url = https://github.com/scribe-src/scribe-platform-osx.git

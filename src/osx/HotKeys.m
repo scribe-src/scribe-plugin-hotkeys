@@ -22,8 +22,8 @@ void RegisterHotKey(NSDictionary *options, ScribeEngine *caller) {
 
   gMyHotKeyID.id = 1;
 
-  RegisterEventHotKey( //cmd-opt-w
-    13, cmdKey+optionKey, gMyHotKeyID,
+  RegisterEventHotKey( //opt-w
+    13, optionKey, gMyHotKeyID,
     GetApplicationEventTarget(), 0, &gMyHotKeyRef
   );
 

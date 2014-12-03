@@ -18,7 +18,7 @@ JS_FILE=./src/HotKeys.js
 ADD_DATA=-sectcreate __DATA __js $(JS_TMP)
 CFLAGS=-undefined suppress -dynamiclib -flat_namespace $(ADD_DATA)
 
-.PHONY: init clean
+.PHONY: init clean install-deps
 
 osx: init
 	mkdir -p build/osx
@@ -30,11 +30,19 @@ osx: init
 	lipo -create $(OSX_OUT).x64 $(OSX_OUT).x86 -output $(OSX_OUT)
 	rm -f $(OSX_OUT).x64 $(OSX_OUT).x86
 
-init:
+init: install-deps
 	# the linker does not NULL terminate the JS_FILE, which is
 	# necessary for our program to treat it as a string
 	cp $(JS_FILE) $(JS_TMP)
 	printf "\x00" >> $(JS_TMP)
 
+install-deps:
+	mkdir -p deps/
+	test -s deps/scribe-platform-osx || (git clone \
+		https://github.com/scribe-src/scribe-platform-osx \
+		deps/scribe-platform-osx && \
+		git submodule update --init --depth 3 --recursive || true)
+
 clean:
 	rm -rf $(BUILD_DIR)
+	rm -rf deps
