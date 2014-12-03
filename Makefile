@@ -29,6 +29,7 @@ osx: init
 		-arch i386 -o $(OSX_OUT).x86
 	lipo -create $(OSX_OUT).x64 $(OSX_OUT).x86 -output $(OSX_OUT)
 	rm -f $(OSX_OUT).x64 $(OSX_OUT).x86
+	@printf "\033[0;32;40mCompiled successfully\033[0m: $(OSX_OUT)\n"
 
 init: install-deps
 	# the linker does not NULL terminate the JS_FILE, which is
@@ -41,7 +42,8 @@ install-deps:
 	test -s deps/scribe-platform-osx || (git clone \
 		https://github.com/scribe-src/scribe-platform-osx \
 		deps/scribe-platform-osx && \
-		git submodule update --init --depth 3 --recursive || true)
+		cd deps/scribe-platform-osx && \
+		git submodule update --init --recursive --depth 1 || true)
 
 clean:
 	rm -rf $(BUILD_DIR)
