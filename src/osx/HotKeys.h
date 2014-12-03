@@ -2,6 +2,6 @@
 #import <Carbon/Carbon.h>
 #import "ScribeEngine.h"
 
-void registerHotKey(NSDictionary *options, ScribeEngine *caller);
+void RegisterHotKey(NSDictionary *options, ScribeEngine *caller);
 
-void unregisterHotKey(NSDictionary *options, ScribeEngine *caller);
+void UnregisterHotKey(NSDictionary *options, ScribeEngine *caller);
